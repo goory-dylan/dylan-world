@@ -1,0 +1,17 @@
+global:
+  resolve_timeout: 5m
+receivers:
+  - name: alertmanager-telegram
+    webhook_configs:
+    - url: 'http://10.40.90.52:9000'
+route:
+  group_by: [job, alertname, cluster, severity]
+  group_interval: 1m
+  group_wait: 30s
+  receiver: alertmanager-telegram
+  repeat_interval: 1m
+  routes:
+  - receiver: alertmanager-telegram
+    match_re: 
+      alertname: .{1,}
+    group_wait: 2s
