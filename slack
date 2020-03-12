@@ -17,3 +17,24 @@ route:
     - receiver: test-webhook
       match:
         severity: warning
+
+
+global:
+  resolve_timeout: 1m
+  slack_api_url: https://hooks.slack.com/services/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
+receivers:
+  - name: 'null'
+  - name: slack
+    slack_configs:
+    - channel: '#openshift'
+route:
+  group_by: [job, alertname, cluster, severity]
+  group_interval: 1m
+  group_wait: 30s
+  receiver: slack
+  repeat_interval: 1m
+  routes:
+    - match_re:
+        alertname: .{1,}
+      group_wait: 2s
+      receiver: slack
