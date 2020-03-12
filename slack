@@ -38,3 +38,8 @@ route:
         alertname: .{1,}
       group_wait: 2s
       receiver: slack
+
+
+
+
+curl -X POST --data-urlencode "payload={\"channel\": \"#test\", \"username\": \"webhookbot\", \"text\": \"This is posted to #test and comes from a bot named webhookbot.\", \"icon_emoji\": \":ghost:\"}" https://hooks.slack.com/services/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
