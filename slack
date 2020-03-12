@@ -3,7 +3,7 @@ global:
 receivers:
   - name: test-webhook
     slack_configs:
-    - api_url: https://hooks.slack.com/services/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
+    - api_url: https://hooks.slack.com/services/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
        channel: '#test'
        title: "Notifications of OpenShift Container Platform Cluster"
 route:
@@ -21,7 +21,7 @@ route:
 
 global:
   resolve_timeout: 1m
-  slack_api_url: https://hooks.slack.com/services/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
+  slack_api_url: https://hooks.slack.com/services/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
 receivers:
   - name: 'null'
   - name: slack
@@ -42,4 +42,4 @@ route:
 
 
 
-curl -X POST --data-urlencode "payload={\"channel\": \"#test\", \"username\": \"webhookbot\", \"text\": \"This is posted to #test and comes from a bot named webhookbot.\", \"icon_emoji\": \":ghost:\"}" https://hooks.slack.com/services/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
+curl -X POST --data-urlencode "payload={\"channel\": \"#test\", \"username\": \"webhookbot\", \"text\": \"This is posted to #test and comes from a bot named webhookbot.\", \"icon_emoji\": \":ghost:\"}" https://hooks.slack.com/services/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
