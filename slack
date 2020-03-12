@@ -1,0 +1,19 @@
+global:
+  resolve_timeout: 5m
+receivers:
+  - name: test-webhook
+    slack_configs:
+    - api_url: https://hooks.slack.com/services/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
+       channel: '#test'
+       title: "Notifications of OpenShift Container Platform Cluster"
+route:
+  group_by:
+    - job
+  group_interval: 30s
+  group_wait: 30s
+  receiver: 'null'
+  repeat_interval: 30s
+  routes:
+    - receiver: test-webhook
+      match:
+        severity: warning
