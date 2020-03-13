@@ -1,0 +1,28 @@
+https://github.com/prometheus/alertmanager/blob/master/doc/examples/simple.yml
+
+
+global:
+  smtp_smarthost: 'krrelay.corp.doosan.com:25'
+  smtp_from: 'namseok1.kim@doosan.com'
+  smtp_require_tls: false
+  resolve_timeout: 5m
+route:
+  group_wait: 30s
+  group_interval: 5m
+  repeat_interval: 12h
+  receiver: ddp-email
+  routes:
+  - match:
+      alertname: Watchdog
+    repeat_interval: 5m
+    receiver: watchdog
+receivers:
+- name: default
+- name: watchdog
+- name: ddp-email
+  email_configs:
+  - to: 'namseok1.kim@doosan.com'
+  - to: 'myeongseok1.seo@doosan.com'
+  - to: 'mjkim@metanet.co.kr'
+  - to: 'hwcho@metanet.co.kr'
+  - to: 'jaejin@metanet.co.kr'
